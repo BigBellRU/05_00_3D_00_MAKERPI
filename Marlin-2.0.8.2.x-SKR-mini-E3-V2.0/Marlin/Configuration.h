@@ -140,7 +140,7 @@
 //#define BLUETOOTH
 
 // Choose the name from boards.h that matches your setup
-#ifndef MOTHERBOARD
+#ifndef MOTHERBOARD 
   #define MOTHERBOARD BOARD_BTT_SKR_MINI_E3_V2_0
 #endif
 
@@ -453,11 +453,11 @@
 
 #define TEMP_RESIDENCY_TIME         10  // (seconds) Time to wait for hotend to "settle" in M109
 #define TEMP_WINDOW                  1  // (°C) Temperature proximity for the "temperature reached" timer
-#define TEMP_HYSTERESIS              3  // (°C) Temperature proximity considered "close enough" to the target
+#define TEMP_HYSTERESIS              5  // (°C) Temperature proximity considered "close enough" to the target
 
 #define TEMP_BED_RESIDENCY_TIME     10  // (seconds) Time to wait for bed to "settle" in M190
 #define TEMP_BED_WINDOW              1  // (°C) Temperature proximity for the "temperature reached" timer
-#define TEMP_BED_HYSTERESIS          3  // (°C) Temperature proximity considered "close enough" to the target
+#define TEMP_BED_HYSTERESIS          8  // (°C) Temperature proximity considered "close enough" to the target
 
 #define TEMP_CHAMBER_RESIDENCY_TIME 10  // (seconds) Time to wait for chamber to "settle" in M191
 #define TEMP_CHAMBER_WINDOW          1  // (°C) Temperature proximity for the "temperature reached" timer
@@ -487,7 +487,7 @@
 #define HEATER_5_MAXTEMP 275
 #define HEATER_6_MAXTEMP 275
 #define HEATER_7_MAXTEMP 275
-#define BED_MAXTEMP      125
+#define BED_MAXTEMP      130
 #define CHAMBER_MAXTEMP  60
 
 /**
@@ -548,7 +548,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -633,7 +633,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 150
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -811,15 +811,23 @@
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
+#define DEFAULT_AXIS_STEPS_PER_UNIT_X  (200/40*64)
+#define DEFAULT_AXIS_STEPS_PER_UNIT_Y  (200/40*64)
+#define DEFAULT_AXIS_STEPS_PER_UNIT_Z  (200/8/32)
+#define DEFAULT_AXIS_STEPS_PER_UNIT_E0 93
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT_X  320
+#define DEFAULT_AXIS_STEPS_PER_UNIT_Y  320
+#define DEFAULT_AXIS_STEPS_PER_UNIT_Z  800
+#define DEFAULT_AXIS_STEPS_PER_UNIT_E0 93
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { DEFAULT_AXIS_STEPS_PER_UNIT_X, DEFAULT_AXIS_STEPS_PER_UNIT_Y, DEFAULT_AXIS_STEPS_PER_UNIT_Z, DEFAULT_AXIS_STEPS_PER_UNIT_E0 }
 
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 200, 200, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 15, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -1238,8 +1246,8 @@
 // @section machine
 
 // The size of the printable area
-#define X_BED_SIZE 235
-#define Y_BED_SIZE 235
+#define X_BED_SIZE 260
+#define Y_BED_SIZE 260
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1712,14 +1720,14 @@
 // Preheat Constants - Up to 5 are supported without changes
 //
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 185
+#define PREHEAT_1_TEMP_HOTEND 190
 #define PREHEAT_1_TEMP_BED     45
 #define PREHEAT_1_TEMP_CHAMBER 35
 #define PREHEAT_1_FAN_SPEED   255 // Value from 0 to 255
 
 #define PREHEAT_2_LABEL       "ABS"
 #define PREHEAT_2_TEMP_HOTEND 240
-#define PREHEAT_2_TEMP_BED    110
+#define PREHEAT_2_TEMP_BED    115
 #define PREHEAT_2_TEMP_CHAMBER 35
 #define PREHEAT_2_FAN_SPEED   255 // Value from 0 to 255
 
