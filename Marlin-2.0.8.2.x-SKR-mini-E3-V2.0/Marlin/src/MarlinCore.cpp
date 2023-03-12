@@ -1553,6 +1553,8 @@ void setup() {
 
   marlin_state = MF_RUNNING;
 
+  restore_stepper_drivers();
+
   SETUP_LOG("setup() completed.");
 }
 
